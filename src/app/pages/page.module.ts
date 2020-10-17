@@ -3,6 +3,8 @@
 IMPORTACIONES*/
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+import { BrowserModule } from '@angular/platform-browser';
 /*import { FormsModule } from '@angular/forms';*/
 
 
@@ -21,6 +23,9 @@ import { Graficos1Component } from './graficos1/graficos1.component';
 import { PagesComponent } from './pages.component';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
+import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -31,7 +36,10 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
     	Graficos1Component,
     	PagesComponent,
     	IncrementadorComponent,
-    	GraficoDonaComponent
+    	GraficoDonaComponent,
+    	AccoutSettingsComponent,
+    	PromesasComponent,
+    	RxjsComponent
 	],
 
 	exports: [
@@ -39,14 +47,19 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
     	ProgressComponent,
     	Graficos1Component,
     	PagesComponent,
-    	IncrementadorComponent
+    	IncrementadorComponent,
+    	GraficoDonaComponent,
+    	AccoutSettingsComponent,
+    	PromesasComponent,
+    	RxjsComponent
 	],
 
 	imports: [
 		SharedModule,
 		PAGES_ROUTE,
 		FormsModule,
-		ChartsModule
+		ChartsModule,
+		BrowserModule
 	],
 
 	providers: [],

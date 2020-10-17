@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+/*Modulo donde tengo mis servicios*/
+import { ServiceModule } from './services/service.module';
+
 /*rutas*/
 
 import { APP_ROUTE } from './app.routes';
@@ -12,10 +16,6 @@ import { APP_ROUTE } from './app.routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
-/*import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';*/
 
 import { RegisterComponent } from './login/register.component';
 
@@ -35,7 +35,8 @@ import { RegisterComponent } from './login/register.component';
     BrowserModule,
     APP_ROUTE,
     PageModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
