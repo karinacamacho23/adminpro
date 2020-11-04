@@ -1,1 +1,5 @@
 [1017/084907.877:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1030/172857.655:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1031/100211.644:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1031/155106.245:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Canaima\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\a715df22-7a1b-43b4-9a85-b69c4ee7a285: El sistema no puede encontrar la ruta especificada. (0x3)
+[1031/155107.140:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)

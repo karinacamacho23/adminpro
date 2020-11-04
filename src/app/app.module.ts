@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 
 /*Modulo donde tengo mis servicios*/
 import { ServiceModule } from './services/service.module';
+
+//Para el formulario
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*rutas*/
 
@@ -36,6 +39,7 @@ import { RegisterComponent } from './login/register.component';
     APP_ROUTE,
     PageModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [],
