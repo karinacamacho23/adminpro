@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 	/*Modulos*/
 import { SharedModule } from '../shared/shared.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 /*ng2-charts*/
 import { ChartsModule } from 'ng2-charts';
@@ -26,6 +27,7 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -39,7 +41,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     	GraficoDonaComponent,
     	AccoutSettingsComponent,
     	PromesasComponent,
-    	RxjsComponent
+    	RxjsComponent,
+    	PerfilComponent
 	],
 
 	exports: [
@@ -51,7 +54,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     	GraficoDonaComponent,
     	AccoutSettingsComponent,
     	PromesasComponent,
-    	RxjsComponent
+    	RxjsComponent,
+        PerfilComponent
 	],
 
 	imports: [
@@ -59,7 +63,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 		PAGES_ROUTE,
 		FormsModule,
 		ChartsModule,
-		BrowserModule
+		BrowserModule,
+        PipesModule
 	],
 
 	providers: [],

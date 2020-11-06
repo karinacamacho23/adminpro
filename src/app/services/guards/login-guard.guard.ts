@@ -14,14 +14,16 @@ export class LoginGuardGuard implements CanActivate {
 	constructor ( public _us : UsuariosService,
 				  public router : Router ) { 
 		this._us.cargarStorage();
+/*		let token = this._us.enviar_token();
+		this._us.cargarBackend(_us.usuario, token );*/
 	}
 
 
 
-	canActivate(  ) {
+	canActivate() {
 
 
-		if (this._us.estaLogueado()) {
+		if ( this._us.estaLogueado() ) {
 			console.log ('paso por el login Gard');
 	    	return true;
 		} else {

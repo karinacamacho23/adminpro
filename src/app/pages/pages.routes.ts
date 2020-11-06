@@ -10,14 +10,16 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const pagesRoutes : Routes = [
 	{
 	 path: '',
 	 component: PagesComponent,
-	 canActivate :[LoginGuardGuard],
+	 canActivate: [ LoginGuardGuard ],
 	 children : [
 	 	{ path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+	 	{ path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil de Usuario' } },
 	 	{ path: 'graficos', component: Graficos1Component, data: { titulo: 'Graficos' } },
 		{ path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
 		{ path: 'accout-settings', component: AccoutSettingsComponent, data: { titulo: 'Ajustes de Tema' } },

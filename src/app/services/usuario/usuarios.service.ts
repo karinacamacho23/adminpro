@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 //modelUsuario
-import { Usuarios } from '../../models/usuarios.model';
-//Const url
-import { URL_SERVICIOS } from '../../config';
 //http
 import { HttpClient } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+//sweetalert
+import swal from 'sweetalert'; 
+
+import { Usuarios } from '../../models/usuarios.model';
+//Const url
+import { URL_SERVICIOS } from '../../config';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+
 
 
 @Injectable({
@@ -18,15 +23,31 @@ export class UsuariosService {
 
   usuario: Usuarios;
   token : string;
-
+  tipo : string = '';
   constructor( private http : HttpClient,
-               private router : Router ) { 
+               private router : Router,
+               private sas : SubirArchivoService ) { 
   	console.log('Servicio Usuario listo de usar!') 
   }
 
   estaLogueado () { //evaluar el tooken
-    return (this.token.length >5 ) ? true : false;
+    
+    return ( this.token.length > 5 ) ? true : false;
 
+  } 
+
+  cargarBackend ( usuario : Usuarios, token : string ) {
+    if ( token ) {
+      this.token = token;
+      this.usuario = usuario;
+    } else {
+      this.token = '';
+      this.usuario = null;
+    }
+  }
+
+  enviar_token () {
+    return this.token;
   }
 
   cargarStorage() { //cargar los valores del localstorage a las vari internas
@@ -41,8 +62,8 @@ export class UsuariosService {
   }//Esta funcion se debe llamar en el constructor ,, para que
   //se ejecute siempre cuando se inicialice
  
-  guardarStorage ( id: string, token:string, usuario:Usuarios ) {
-    localStorage.setItem( 'id', id );//modificado _id
+  guardarStorage ( _id: string, token:string, usuario:Usuarios ) {
+    localStorage.setItem( 'id', _id );//modificado _id
     localStorage.setItem( 'token', token );
     localStorage.setItem( 'usuario',  JSON.stringify(usuario) );
     this.usuario = usuario;
@@ -53,9 +74,11 @@ export class UsuariosService {
   logout () {
     this.usuario = null;
     this.token = '';
+  
     //localStorage.clear(); me borra absolutamente todo
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
+    localStorage.removeItem('id');
 
     this.router.navigate(['/login']);
   }
@@ -66,6 +89,7 @@ export class UsuariosService {
       .pipe(
           (map (( resp:any) => {
             this.guardarStorage(resp._id, resp.token, resp.usuario);
+            this.cargarStorage(); //para el chequeo del login Gards
             return true; 
           }))
        )
@@ -84,7 +108,12 @@ export class UsuariosService {
   		.pipe( map( (resp : any) => {
   				localStorage.setItem( 'id', resp._id );//modificado _id
   				localStorage.setItem( 'token', resp.token );
-  				localStorage.setItem( 'usuario',  JSON.stringify(usuario) );
+  				localStorage.setItem( 'usuario',  JSON.stringify(resp.usuario) );
+          this.cargarStorage(); //funcion para cargar datos del storage (usarlo como ultimo recurso)
+ 
+          //cargar datos del backend:
+          this.cargarBackend ( resp.usuario, resp.token );
+          
   				return true;
   			})
   		);
@@ -99,6 +128,53 @@ export class UsuariosService {
   				return resp
 	  		})
 	  	);
+  }
+
+  actualizarUsuario ( usuario : Usuarios ) {
+
+
+    let url= URL_SERVICIOS + '/usuario/' + usuario._id;
+    
+    //se requiere el token
+    url += '?token=' + this.token;
+    console.log(url)
+    return this.http.put ( url, usuario )
+      .pipe( map( (resp : any) => {
+        //Actualizar datos en el localstorage
+              
+          this.guardarStorage(resp.usuario._id, this.token, resp.usuario );
+          swal(  
+            'Usuario Actualizado',
+            resp.usuario.nombre,
+            'success'
+           );
+      } ) )
+  }
+
+
+
+  cambiarImagen ( archivo: File, id: string ) {
+    //llamado al metodo del servicio SUBIR cambiarImagen
+    
+    this.sas.subirArchivo( archivo, 'usuarios' , id )
+
+      .then( (resp : any) => {
+        console.log (resp);
+        this.usuario.img = resp.usuario.img;
+        this.tipo = 'usuarios';
+        swal(
+          'Imagen Actualizada',
+          this.usuario.nombre,
+          'success'
+        );
+
+        //guardarStorage
+        this.guardarStorage( id, this.token, this.usuario );
+      } )
+
+      .catch( (resp : any) => {
+        console.log (resp);
+      } )
   }
   			
 }
