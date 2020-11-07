@@ -25,7 +25,6 @@ export class SubirArchivoService {
 	  		if ( xhr.readyState === 4 ) {
 	  			if ( xhr.status == 200 ) {
 	  				
-	  				console.log('el tipo q se encuentra es '+tipo);
 	  				resolve (JSON.parse(xhr.response));//tendra la info q retorna en el back
 	  			} else {
 	  				console.log (' Fallo la subida del arch ');

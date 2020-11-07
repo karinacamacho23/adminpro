@@ -30,8 +30,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 
-
-
+//MODAL
+import { ModaUploadComponent } from '../components/moda-upload/moda-upload.component';
 @NgModule({ 
 	declarations: [
 		DashboardComponent,
@@ -44,7 +44,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     	PromesasComponent,
     	RxjsComponent,
     	PerfilComponent,
-    	UsuariosComponent
+    	UsuariosComponent,
+        ModaUploadComponent
 	],
 
 	exports: [
@@ -58,7 +59,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     	PromesasComponent,
     	RxjsComponent,
         PerfilComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        ModaUploadComponent
 	],
 
 	imports: [

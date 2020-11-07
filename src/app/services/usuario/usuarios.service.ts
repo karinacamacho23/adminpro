@@ -137,17 +137,21 @@ export class UsuariosService {
     
     //se requiere el token
     url += '?token=' + this.token;
-    console.log(url)
     return this.http.put ( url, usuario )
       .pipe( map( (resp : any) => {
         //Actualizar datos en el localstorage
-              
-          this.guardarStorage(resp.usuario._id, this.token, resp.usuario );
+          if ( usuario._id === this.usuario._id ){
+            let usuarioDB : Usuarios = resp.usuario;
+            this.guardarStorage(resp.usuario._id, this.token, resp.usuario ); 
+            
+          }   
+          
           swal(  
             'Usuario Actualizado',
             resp.usuario.nombre,
             'success'
            );
+          return true;
       } ) )
   }
 
@@ -189,5 +193,17 @@ export class UsuariosService {
     let url = URL_SERVICIOS + '/busqueda/todo/coleccion/usuario/' + termino;
     
     return this.http.get( url );
+  }
+
+
+  borrarUsuario( id: string ) {
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete( url )
+      .pipe(map(res => {
+        swal ('Usuario borrado', 'El usuario a sido eliminado correctamente', 'success');
+        return true;
+      }))
   }
 }

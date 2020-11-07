@@ -13,7 +13,6 @@ export class BreadcrumbsComponent implements OnInit {
 	titulo : string;
   constructor( private router : Router ) { 
   	this.getDataRoute().subscribe( data => {
-  			console.log ( data );
   			this.titulo = data.titulo;
   		})
   }
