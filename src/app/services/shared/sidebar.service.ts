@@ -17,8 +17,19 @@ export class SidebarService {
 				{ titulo : 'Promesas', url : '/promesas' },
 				{ titulo : 'RxJs', url : '/rxjs' }	
 			]		
+		},
+
+		{
+			titulo : 'Mantenimiento',
+			icono  : 'mdi mdi-folder-lock-open',
+			submenu: [
+				{ titulo : 'Usuarios', url : '/usuario' },
+				{ titulo : 'Hospitales', url : '/hospital' },
+				{ titulo : 'Medicos', url : '/medico' }
+				
+			]
 		}
 	];
 
-	constructor() { }
+	constructor() {  }
 }

@@ -69,6 +69,7 @@ export class RegisterComponent implements OnInit {
 		if ( !this.forma.value.condiciones ) {
 			//se modifica segun su estilo
 			swal("Importante", "Debe aceptar las condiciones", "warning");
+			return;
 		}
 		
 		let usuario = new Usuarios (

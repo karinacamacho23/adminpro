@@ -176,5 +176,18 @@ export class UsuariosService {
         console.log (resp);
       } )
   }
-  			
+
+
+  cargarUsuarios( desde : number ) {
+    let url = URL_SERVICIOS + '/usuario?desde=' + desde;
+    return this.http.get( url );
+  }
+  	
+  buscarUsuario( termino : string ) {
+   
+
+    let url = URL_SERVICIOS + '/busqueda/todo/coleccion/usuario/' + termino;
+    
+    return this.http.get( url );
+  }
 }
