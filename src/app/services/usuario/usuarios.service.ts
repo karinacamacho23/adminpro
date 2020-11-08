@@ -112,7 +112,7 @@ export class UsuariosService {
           this.cargarStorage(); //funcion para cargar datos del storage (usarlo como ultimo recurso)
  
           //cargar datos del backend:
-          this.cargarBackend ( resp.usuario, resp.token );
+          //this.cargarBackend ( resp.usuario, resp.token );
           
   				return true;
   			})

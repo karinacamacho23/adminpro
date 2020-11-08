@@ -15,7 +15,7 @@ export class PerfilComponent implements OnInit {
   usuario : Usuarios;
   subirImagen : File; //defecto sera null o undefine
   tipo : string ;
-  imagenTemp : string;
+  imagenTemp : any;
 
   constructor( private us: UsuariosService ) {
    this.usuario = us.usuario 
@@ -61,10 +61,10 @@ export class PerfilComponent implements OnInit {
     this.subirImagen = archivo;
     //codigo JS para la funcion de que me aparezca imagen sin haberla almacenado
     //Solo una imagen temporal HASTA pulsar ACEPTAR
-    /*let reader = new FileReader();
+    let reader = new FileReader();
     let urlImagenTemp = reader.readAsDataURL( archivo );
 
-    reader.onloadend = () => this.imagenTemp = reader.result ;*/ //
+    reader.onloadend = () => this.imagenTemp = reader.result ; //
     //-------->no funciona
 
   //solo selecciona el usuario la imagen

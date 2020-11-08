@@ -30,19 +30,15 @@
             <h4 class="card-tittle">Foto del Usuario</h4>
             <h6 class="card-subtittle">Nombre del Usuario</h6>
             
-            <img *ngIf="!imagenTemp" [src]="usuario.img | imagen:'usuarios'" class="w150 pb-5" >
-            <img *ngIf="imagenTemp" [src]="usuario.img | imagen:'usuarios'" class="w150  pb-5" > 
-            
-             
-      
-            
-
+            <img *ngIf="!imagenTemp" [src]="usuario.img | imagen:'usuarios'" class="w150" >
+            <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150" > 
+    
             <br>
             <input (change)="seleccionImagen( $event.target.files[0] )" type="file">
 
             <br><br>
 
-            <button (click)="cambiarImagen()" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"></i> 
+            <button (click)="cambiarImagen()" [disabled]="!subirImagen" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"></i> 
                 Actualizar Foto
             </button>
                 

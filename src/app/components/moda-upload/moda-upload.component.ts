@@ -10,15 +10,16 @@ import { ModalUploadService } from '../moda-upload/modal-upload.service';
 })
 export class ModaUploadComponent implements OnInit {
 
-  oculto : string = '';
+  oculto : string = this.ms.oculto;
   subirImagen : File; //defecto sera null o undefine
-  imagenTemp : string;
+  imagenTemp : any;
 
 
   constructor( public sas :SubirArchivoService,
   				public ms : ModalUploadService ) { }
 
   ngOnInit(): void {
+    console.log('Modal desde componente.ts')
   }
 
   cerrarModal() {
@@ -43,6 +44,10 @@ export class ModaUploadComponent implements OnInit {
 		  	return;
 		}
 		this.subirImagen = archivo;
+    let reader = new FileReader();
+    let urlImagenTemp = reader.readAsDataURL( archivo );
+
+    reader.onloadend = () => this.imagenTemp = reader.result ;
    }
 
    subirrImagen () {

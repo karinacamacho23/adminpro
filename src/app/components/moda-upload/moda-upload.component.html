@@ -14,10 +14,10 @@
 
 
 
-					<img *ngIf="!imagenTemp" [src]="'xxx' | imagen:'usuarios'" class="w150 pb-5" >
-		            <img *ngIf="imagenTemp" [src]="usuario.img | imagen:'usuarios'" class="w150  pb-5" > 
+					<img *ngIf="!imagenTemp" [src]="'xxx' | imagen:'usuarios'" class="w150" >
+		            <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150" > 
 		                            
-		            
+		             
 		            <br>
 		            <input (change)="seleccionImagen( $event.target.files[0] )" type="file">
 

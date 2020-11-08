@@ -16,6 +16,7 @@ import {
 
 @NgModule({
   declarations: [],
+  
   providers : [
   	SettingsService, 
   	SharedService, 

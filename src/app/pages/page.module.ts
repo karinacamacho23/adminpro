@@ -32,6 +32,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 
 //MODAL
 import { ModaUploadComponent } from '../components/moda-upload/moda-upload.component';
+
+
 @NgModule({ 
 	declarations: [
 		DashboardComponent,
@@ -60,7 +62,7 @@ import { ModaUploadComponent } from '../components/moda-upload/moda-upload.compo
     	RxjsComponent,
         PerfilComponent,
         UsuariosComponent,
-        ModaUploadComponent
+        ModaUploadComponent       
 	],
 
 	imports: [
@@ -72,7 +74,9 @@ import { ModaUploadComponent } from '../components/moda-upload/moda-upload.compo
         PipesModule
 	],
 
-	providers: [],
+	providers: [
+       
+    ],
 
 
 
